@@ -1,0 +1,8 @@
+
+    .gradient-background {
+      background: conic-gradient(from 285deg, #E74C3C, #C0392B);
+      min-height: 100vh;
+      width: 100%;
+      transition: background 0.5s ease; /* Smooth transition for gradient changes */
+    }
+  
