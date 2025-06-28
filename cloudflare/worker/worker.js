@@ -76,4 +76,4 @@ async function handleRequest(request) {
   }
 
   return new Response('Not Found', { status: 404 });
-}
+} 
