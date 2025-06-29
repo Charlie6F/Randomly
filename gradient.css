@@ -5,33 +5,3 @@
       width: 100%;
       transition: background 0.5s ease; /* Smooth transition for gradient changes */
     }
-<script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
-<script>
-        // Function to generate a random color in hex format
-        function getRandomColor() {
-          const letters = '0123456789ABCDEF';
-          let color = '#';
-          for (let i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-          }
-          return color;
-        }
-        
-        window.onload = function() {
-          Particles.init({
-            selector: '.background',
-            minDistance: 200,
-            speed: 3,
-            sizeVariations: 5,
-            color: [
-                getRandomColor(), 
-                getRandomColor(), 
-                getRandomColor(), 
-                getRandomColor(), 
-                getRandomColor(),
-                getRandomColor(),
-            ],
-            connectParticles: true
-          });
-        };
-</script>
