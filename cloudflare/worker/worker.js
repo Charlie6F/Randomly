@@ -55,7 +55,7 @@ async function handleRequest(request) {
     });
   }
 
-  if (path === '/') {
+  if (path === '/' || path === '/x') {
     const htmlContent = `
       <!DOCTYPE html>
       <html>
