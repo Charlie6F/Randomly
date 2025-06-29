@@ -1,7 +1,4 @@
 # Randomly
-<<<<<<< HEAD
-Randomly generates Css Color Gradients
-=======
 
 A simple web application that generates random gradient backgrounds using Cloudflare Workers. Each time you refresh the page, a new gradient is displayed with a smooth transition effect.
 
@@ -72,4 +69,3 @@ To customize the gradients, modify the `colorPalettes` array in `worker.js` to i
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
->>>>>>> c8a5f24 (update)
