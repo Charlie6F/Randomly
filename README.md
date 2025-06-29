@@ -1,6 +1,7 @@
 # Randomly
 
 A simple web application that generates random gradient backgrounds using Cloudflare Workers. Each time you refresh the page, a new gradient is displayed with a smooth transition effect.
+[Demo](https://charlie6f.github.io/Randomly/)
 
 ## Features
 
