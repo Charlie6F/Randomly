@@ -46,7 +46,7 @@ async function handleRequest(request) {
     const cssContent = `
       .gradient-background {
         background: ${generateRandomGradient()};
-        min-height: 100vh;
+        //min-height: 100vh;
         width: 100%;
         transition: background 0.5s ease;
       }
