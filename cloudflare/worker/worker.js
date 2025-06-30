@@ -1,4 +1,4 @@
-import { lightColorPalettes, darkColorPalettes } from './worker_assets/ColorPalettes.js';
+import { lightColorPalettes, darkColorPalettes } from './ColorPalettes.js';
 
 function getRandomPalette(theme = 'light') {
   const palettes = theme === 'dark' ? darkColorPalettes : lightColorPalettes;
