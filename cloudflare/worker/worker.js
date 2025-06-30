@@ -2,7 +2,7 @@ import { lightColorPalettes, darkColorPalettes } from './worker_assets/ColorPale
 
 function getRandomPalette(theme = 'light') {
   const palettes = theme === 'dark' ? darkColorPalettes : lightColorPalettes;
-  console.log(palettes)
+  console.log(palettes, darkColorPalettes, lightColorPalettes)
   return palettes[Math.floor(Math.random() * palettes.length)];
 }
 

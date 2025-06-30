@@ -3,3 +3,9 @@ main = "worker.js"
 
 workers_dev = true
 compatibility_date = "2023-02-28"
+
+[observability.logs]
+enabled = true
+
+
+
