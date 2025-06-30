@@ -17,3 +17,5 @@ const darkColorPalettes = [
   ['#411D2B', '#110E15'], // Wine and Dark Purple
   ['#522377', '#254D70']  // Indigo and Navy Blue
 ];
+
+export {darkColorPalettes, lightColorPalettes}; 
