@@ -1,5 +1,10 @@
 name = "randomly"
 main = "worker.js"
+type = "modules"
+
+[[modules]]
+name = "worker"
+type = "esModule"
 
 workers_dev = true
 compatibility_date = "2023-02-28"
