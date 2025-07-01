@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Random Gradient Background</title>
-  <link rel="stylesheet" href="https://randomly.nexu.name.ng/gradient.css">
+  <link rel="stylesheet" href="https://randomly.nexu.name.ng/gradient.css?theme=${theme}">
   <style>
     body {
       margin: 0;
@@ -22,12 +22,234 @@
     p {
       font-size: 1.2em;
     }
+    .icon-size svg {
+        width: 30px;
+        height: 30px;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+/* CSS */
+.button-82-pushable {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition: filter 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-82-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+.button-82-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    hsl(340deg 100% 16%) 0%,
+    hsl(340deg 100% 32%) 8%,
+    hsl(340deg 100% 32%) 92%,
+    hsl(340deg 100% 16%) 100%
+  );
+}
+
+.button-82-front {
+  display: block;
+  position: relative;
+  padding: 12px 27px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: white;
+  background: hsl(345deg 100% 47%);
+  will-change: transform;
+  transform: translateY(-4px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+@media (min-width: 768px) {
+  .button-82-front {
+    font-size: 1.25rem;
+    padding: 12px 42px;
+  }
+}
+
+.button-82-pushable:hover {
+  filter: brightness(110%);
+  -webkit-filter: brightness(110%);
+}
+
+.button-82-pushable:hover .button-82-front {
+  transform: translateY(-6px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-82-pushable:active .button-82-front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.button-82-pushable:hover .button-82-shadow {
+  transform: translateY(4px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-82-pushable:active .button-82-shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+.button-82-pushable:focus:not(:focus-visible) {
+  outline: none;
+}
   </style>
 </head>
 <body class="gradient-background">
   <div>
     <h1>Random Gradient Background</h1>
-    <p>Refresh the page to see a new random gradient!</p>
+    <p>Refresh the page to see a new random gradient! <br> Click on the Button to Toggle Between Dark and Light Themes</p>
+    <p class="current-theme">Current theme: <span>?</span></p>
+    <button href="#" class="theme-toggle icon-size button-82-pushable" title="Switch to Dark Mode" role="button">
+        <span class="button-82-shadow"></span>
+        <span class="button-82-edge"></span>
+        <span class="button-82-front text ">
+            Change Theme: <span class="btext" >Light Mode</span>
+            <br>
+            <svg class="icon-size" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- The SVG path will be replaced by JavaScript -->
+                <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 2V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 20V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4.93 4.93L6.34 6.34" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M17.66 17.66L19.07 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 12H4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20 12H22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.34 17.66L4.93 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M19.07 4.93L17.66 6.34" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </span>
+    </button>
   </div>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+      // Get theme toggle button and stylesheet link
+      const themeToggle = document.querySelector('.theme-toggle');
+      const themeStylesheet = document.querySelector('link[href*="gradient.css"]');
+      const currentTheme = document.querySelector('.current-theme');
+      
+      // SVG paths for sun and moon icons
+      const sunIcon = `
+        <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 2V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 20V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M4.93 4.93L6.34 6.34" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17.66 17.66L19.07 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M2 12H4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M20 12H22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6.34 17.66L4.93 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19.07 4.93L17.66 6.34" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      `;
+      
+      const moonIcon = `
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      `;
+      
+      // Check for saved theme preference or use system preference
+      const savedTheme = localStorage.getItem('perf-theme');
+      const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      // Set initial theme
+      if (savedTheme === 'dark' || (!savedTheme && prefersDarkMode)) {
+        applyDarkTheme();
+      } else {
+        applyLightTheme();
+      }
+      
+        // Add click event listener to theme toggle button
+      themeToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleTheme();
+      });
+    
+      // Function to toggle between light and dark themes
+      function toggleTheme() {
+        if (document.documentElement.classList.contains('dark-theme')) {
+          applyLightTheme();
+        } else {
+          applyDarkTheme();
+        }
+      }
+      function applyLightTheme() {
+        document.documentElement.classList.remove('dark-theme');
+        localStorage.setItem('perf-theme', 'light');
+        
+        // Update stylesheet href
+        if (themeStylesheet) {
+          themeStylesheet.href = 'https://randomly.nexu.name.ng/gradient.css?theme=light';
+        }
+        currentTheme.querySelector('span').innerHTML = "light";
+        // Change icon to moon (indicating switch to dark mode is available)
+        themeToggle.getElementsByClassName('btext')[0].innerHTML = "Dark Mode";
+        themeToggle.querySelector('svg').innerHTML = moonIcon;
+        themeToggle.setAttribute('title', 'Switch to Dark Mode');
+      }
+    
+      // Function to apply dark theme
+      function applyDarkTheme() {
+        document.documentElement.classList.add('dark-theme');
+        localStorage.setItem('perf-theme', 'dark');
+        
+        // Update stylesheet href
+        if (themeStylesheet) {
+          themeStylesheet.href = 'https://randomly.nexu.name.ng/gradient.css?theme=dark';
+        }
+        
+        currentTheme.querySelector('span').innerHTML = "dark";
+        // Change icon to sun (indicating switch to light mode is available)
+        themeToggle.getElementsByClassName('btext')[0].innerHTML = "Light Mode";
+        themeToggle.querySelector('svg').innerHTML = sunIcon;
+        themeToggle.setAttribute('title', 'Switch to Light Mode');
+      }
+      // Listen for system preference changes
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (!localStorage.getItem('perf-theme')) {
+          if (e.matches) {
+            applyDarkTheme();
+          } else {
+            applyLightTheme();
+          }
+        }
+      });
+  });
+  </script>
 </body>
 </html>

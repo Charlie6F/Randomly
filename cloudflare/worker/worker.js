@@ -1,21 +1,15 @@
-const colorPalettes = [
-  ['#FF6B6B', '#4ECDC4'], // Coral and Teal
-  ['#A8E6CF', '#DCEDC1'], // Mint and Light Green
-  ['#FFD3B6', '#FF8C94'], // Peach and Soft Pink
-  ['#D4A5A5', '#9B59B6'], // Rose and Purple
-  ['#3498DB', '#1ABC9C'], // Blue and Turquoise
-  ['#F7DC6F', '#F0C05A'], // Yellow and Amber
-  ['#E74C3C', '#C0392B'], // Red and Deep Red
-];
+import { lightColorPalettes, darkColorPalettes } from './ColorPalettes.js';
 
-function getRandomPalette() {
-  return colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
+function getRandomPalette(theme = 'light') {
+  const palettes = theme === 'dark' ? darkColorPalettes : lightColorPalettes;
+  console.log(palettes, darkColorPalettes, lightColorPalettes)
+  return palettes[Math.floor(Math.random() * palettes.length)];
 }
 
-function generateRandomGradient() {
+function generateRandomGradient(theme) {
   const types = ['linear', 'radial', 'conic'];
   const gradientType = types[Math.floor(Math.random() * types.length)];
-  const [color1, color2] = getRandomPalette();
+  const [color1, color2] = getRandomPalette(theme);
   let gradient;
 
   switch (gradientType) {
@@ -41,11 +35,12 @@ addEventListener('fetch', event => {
 async function handleRequest(request) {
   const url = new URL(request.url);
   const path = url.pathname;
+  const theme = url.searchParams.get('theme') || 'light';
 
   if (path === '/gradient.css') {
     const cssContent = `
       .gradient-background {
-        background: ${generateRandomGradient()};
+        background: ${generateRandomGradient(theme)};
         min-height: 100vh;
         width: 100%;
         transition: background 0.5s ease;
@@ -58,39 +53,20 @@ async function handleRequest(request) {
 
   if (path === '/' || path === '/x') {
     const htmlContent = `
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Random Gradient Background</title>
-          <link rel="stylesheet" href="/gradient.css">
-          <style>
-            body {
-              margin: 0;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              font-family: Arial, sans-serif;
-              color: #fff;
-              text-align: center;
-              text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-            }
-            h1 {
-              font-size: 2.5em;
-            }
-            p {
-              font-size: 1.2em;
-            }
-          </style>
-        </head>
-        <body class="gradient-background">
-          <div>
-            <h1>Random Gradient Background</h1>
-            <p>Refresh the page to see a new random gradient!</p>
-          </div>
-        </body>
-        </html>
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Random Gradient Background</title>
+        <link rel="stylesheet" href="/gradient.css?theme=${theme}">
+      </head>
+      <body class="gradient-background">
+        <div style="text-align: center; padding: 50px; color: ${theme === 'dark' ? '#ffffff' : '#000000'};">
+          <h1>Random Gradient Background</h1>
+          <p>Refresh the page to see a new random gradient!</p>
+          <p>Current theme: ${theme}</p>
+        </div>
+      </body>
+      </html>
     `;
     return new Response(htmlContent, {
       headers: { 'Content-Type': 'text/html' },
